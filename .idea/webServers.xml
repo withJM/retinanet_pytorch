@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="550a6b7f-bf46-41b7-84bf-289cfa104634" name="jm@seven.iacryl.com:65533 password">
+        <fileTransfer rootFolder="/home/jm" accessType="SFTP" host="seven.iacryl.com" port="65533" sshConfigId="c126eb91-8414-4b6b-bced-dfbec51aea06" sshConfig="jm@seven.iacryl.com:65533 password" />
+      </webServer>
+    </option>
+  </component>
+</project>
