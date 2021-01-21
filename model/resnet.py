@@ -3,15 +3,6 @@ import torch.nn as nn
 
 # __all__ = ['ResNet', 'resnet18', 'resnet34', 'resnet50', 'resnet101','resnet152']
 
-
-model_urls = {
-    'resnet18': 'https://download.pytorch.org/models/resnet18-5c106cde.pth',
-    'resnet34': 'https://download.pytorch.org/models/resnet34-333f7ec4.pth',
-    'resnet50': 'https://download.pytorch.org/models/resnet50-19c8e357.pth',
-    'resnet101': 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth',
-    'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth'
-}
-
 def conv3x3(in_planes, out_planes, stride=1, groups=1, dilation=1):
     """3x3 convolution with padding"""
     return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride,
@@ -197,15 +188,41 @@ class ResNet(nn.Module):
 
         x = self.layer1(x)
         x = self.layer2(x)
+        print('layer2_output', x.shape)
         x = self.layer3(x)
+        print('layer3_output', x.shape)
         x = self.layer4(x)
+        print('layer4_output', x.shape)
+
 
         x = self.avgpool(x)
         x = torch.flatten(x, 1)
         x = self.fc(x)
-
         return x
 
     def forward(self, x):
         return self._forward_impl(x)
+
+
+if __name__ == "__main__":
+    # import torchvision.models as models
+    # resnet50 = models.resnet18(pretrained=True)
+    # state_dict = resnet50.state_dict()
+    # torch.save(state_dict, '../weight/resnet18.pth')
+
+    layers = [[2, 2, 2, 2],
+              [3, 4, 6, 3],
+              [3, 4, 6, 3],
+              [3, 4, 23, 3],
+              [3, 8, 36, 3]]
+    model = ResNet(Bottleneck, layers[1])
+    # state_dict = model.state_dict()
+    # pretraind_state_dict = torch.load('../weight/resnet50.pth')
+    # for k, v in state_dict.items():
+    #     state_dict[k] = pretraind_state_dict[k]
+    # model.load_state_dict(state_dict)
+
+    input = torch.randn([1, 3, 512, 512])
+    model(input)
+
 
