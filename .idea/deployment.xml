@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="jm@seven.iacryl.com:65533 password">
+  <component name="PublishConfigData" autoUpload="Always" serverName="67 retinanet">
     <serverData>
+      <paths name="67 retinanet">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/jm/research/share/retinanet" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="jm@seven.iacryl.com:65533 password">
         <serverdata>
           <mappings>

@@ -3,7 +3,14 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="550a6b7f-bf46-41b7-84bf-289cfa104634" name="jm@seven.iacryl.com:65533 password">
-        <fileTransfer rootFolder="/home/jm" accessType="SFTP" host="seven.iacryl.com" port="65533" sshConfigId="c126eb91-8414-4b6b-bced-dfbec51aea06" sshConfig="jm@seven.iacryl.com:65533 password" />
+        <fileTransfer rootFolder="/home/jm" accessType="SFTP" sshConfigId="c126eb91-8414-4b6b-bced-dfbec51aea06" sshConfig="jm@seven.iacryl.com:65533 password" />
+      </webServer>
+      <webServer id="5b54edf2-f3af-4858-add3-e702cb447fbd" name="67 retinanet">
+        <fileTransfer accessType="SFTP" host="192.168.0.67" port="22" sshConfigId="40b33280-b8ac-46ec-bdda-68886eb7109a" sshConfig="jm@192.168.0.67:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
       </webServer>
     </option>
   </component>

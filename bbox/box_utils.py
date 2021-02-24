@@ -66,25 +66,24 @@ def conner_to_center_form(boxes: torch.Tensor):
 
 
 def rescale_bbox(bboxes,
-                 model_image_size,
-                 origin_image_size):
+                 input_image_size,
+                 output_image_size):
     '''
     :param bboxes: [num_obj, 4] = [x1, y1, x2, y2]
     :param model_image_size: (width, height) = (int, int)
     :param origin_image_size: (width, height) = (int, int)
     :return:
     '''
-    if isinstance(model_image_size, int):
-        model_image_size = [model_image_size, model_image_size]
-    # if isinstance(origin_image_size, int):
-    #     origin_image_size = [origin_image_size, origin_image_size]
+    if isinstance(input_image_size, int):
+        input_image_size = [input_image_size, input_image_size]
+    if isinstance(output_image_size, int):
+        output_image_size = [output_image_size, output_image_size]
 
     # x_scale = origin_image_size[0] / model_image_size[0]
     # y_scale = origin_image_size[1] / model_image_size[1]
-    x_scale = model_image_size[0] / origin_image_size[0]
-    y_scale = model_image_size[1] / origin_image_size[1]
+    x_scale = output_image_size[0] / input_image_size[0]
+    y_scale = output_image_size[1] / input_image_size[1]
 
-    print(bboxes)
     bboxes[..., 0] = bboxes[..., 0] * float(x_scale)
     bboxes[..., 2] = bboxes[..., 2] * float(x_scale)
     bboxes[..., 1] = bboxes[..., 1] * float(y_scale)
